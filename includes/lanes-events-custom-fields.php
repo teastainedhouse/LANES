@@ -16,7 +16,21 @@
 *      -if y: What fields? options: first name, last name, phone, email, age, (custom?)
 */
 
+add_action("admin_init", "lanes_add_custom_event_fields");
 
+function lanes_add_custom_event_fields(){
+    add_meta_box("lanes-event-title", "Event Title", "lanes_event_title", "event", "normal", "high");
+}
+
+function lanes_event_title(){
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $year_completed = $custom["year_completed"][0];
+    ?>
+    <label>Year:</label>
+    <input name="year_completed" value="<?php echo $year_completed; ?>" />
+    <?php
+}
 
 
 
