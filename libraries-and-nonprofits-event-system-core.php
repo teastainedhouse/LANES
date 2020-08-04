@@ -33,3 +33,5 @@ require_once plugin_dir_path(__FILE__) . 'includes/lanes-event-functions.php';
 add_action( 'init', 'lanes_register_events' );
 add_action( 'init', 'lanes_register_event_categories' );
 add_action( 'init', 'lanes_register_event_tags' );
+
+//I have no idea how to make git wooooork, why is this so fucking hard, arrrrrrrg
