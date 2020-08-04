@@ -22,6 +22,33 @@ You should have received a copy of the GNU General Public License
 with this program. If not, visit: https://www.gnu.org/licenses/
 */
 
+/*
+ * Done:
+ *
+ *
+ * To do:
+ * VERSION 1.0
+ * -Accept Event input
+ * -Display Events in date order in a list
+ * -Display Events in a pretty grid
+ * -Display Events in a calendar
+ * ---also printable version
+ * -Recurring Events options
+ * ---custom date picker (somehow connect recurring events so that they can be bulk edited OR separately edited - I have NO IDEA how to do this!)
+ * -Shortcode creator to display events wherever
+ *
+ * VERSION 2.0
+ * -Sign up to request reminder emails
+ * -Send reminder emails
+ * -System for site admin to set up automated "newsletter" Event emails
+ * ---Admin can pick daily, weekly, biweekly, or monthly "newsletters" that are all the upcoming events in a admin-defined range
+ *
+ * VERSON 3.0
+ * -Prepare for Beta release
+ * ---Create a settings page
+ * ---First install optional walkthrough
+ */
+
 //preventing access to php files for security
 if ( !defined('ABSPATH'))
 {
@@ -35,17 +62,4 @@ add_action( 'init', 'lanes_register_event_categories' );
 add_action( 'init', 'lanes_register_event_tags' );
 
 //creates Custom Fields for Events
-/*
- * -Event Title
- * -Description
- * -Featured Image
- * -Start & End Date
- * -All day? y/n
- *      -if n: Start & End Time
- * -Repeats? y/n
- *      -if y: date picker (how to do this??? copy the event to multiple days but also keep it so that they can all be edited at once or individually....)
- * -Registration? y/n
- *      -if y: Limit? y/n
- *          -if y: how many?
- *      -if y: What fields? options: first name, last name, phone, email, age, (custom?)
- */
+require_once plugin_dir_path(__FILE__) . 'includes/lanes_events_custom_fields.php';
