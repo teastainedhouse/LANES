@@ -11,6 +11,8 @@ An all-inclusive event system built with Public Libraries and Nonprofits in mind
  
 Create events to support your patrons, display them in widgets, enable your users to register for events, limit registrations, and generate media for physical or electronic publishing.
  
+EVERYTHING BELOW THIS LINE IS FROM A BOILERPLATE THAT I GOT FROM ELSEWHERE, PLEASE DISREGARD FOR THE TIME BEING.
+
 
  
 == Installation ==
