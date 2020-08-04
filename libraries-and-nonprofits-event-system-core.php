@@ -47,5 +47,5 @@ add_action( 'init', 'lanes_register_event_tags' );
  * -Registration? y/n
  *      -if y: Limit? y/n
  *          -if y: how many?
- *      -if y: What fields? options: first name, last name, phone, email, age, (custom?) *
+ *      -if y: What fields? options: first name, last name, phone, email, age, (custom?)
  */
