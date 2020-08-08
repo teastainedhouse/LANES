@@ -62,4 +62,4 @@ add_action( 'init', 'lanes_register_event_categories' );
 add_action( 'init', 'lanes_register_event_tags' );
 
 //creates Custom Fields for Events
-require_once plugin_dir_path(__FILE__) . 'includes/lanes_events_custom_fields.php';
+require_once plugin_dir_path(__FILE__) . 'includes/lanes-events-custom-fields.php';

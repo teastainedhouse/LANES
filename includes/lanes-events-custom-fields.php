@@ -16,22 +16,68 @@
 *      -if y: What fields? options: first name, last name, phone, email, age, (custom?)
 */
 
-add_action("admin_init", "lanes_add_custom_event_fields");
-
-function lanes_add_custom_event_fields(){
-    add_meta_box("lanes-event-title", "Event Title", "lanes_event_title", "event", "normal", "high");
+function lanes_add_event_metaboxes ($post)
+{
+    add_meta_box('lanes-event-details', 'Event Details', 'lanes_metabox_event_fields', 'events', 'normal', 'high');
 }
 
-function lanes_event_title(){
+function lanes_metabox_event_fields()
+{
     global $post;
-    $custom = get_post_custom($post->ID);
-    $year_completed = $custom["year_completed"][0];
+    $post_id = $post->ID;
+
+    $event_title = get_post_meta($post_id, 'lanes-event-title', true);
+    $event_desc = get_post_meta($post_id,'lanes-event-desc', true);
+    $event_start_date = get_post_meta($post_id,'lanes-event-start-date', false);
+    $event_end_date = get_post_meta($post_id,'lanes-event-end-date', false);
     ?>
-    <label>Year:</label>
-    <input name="year_completed" value="<?php echo $year_completed; ?>" />
+    <div class="lanes-field-row">
+        <div class="lanes-field-container">
+            <label>Event Title</label>
+            <input type="text" name="lanes-event-title" required="required" class="widefat" value="<?php echo $event_title ?>">
+        </div>
+        <div class="lanes-field-container">
+            <label>Event Description</label><br/>
+            <textarea name="lanes-event-desc" required="required" rows="10" cols="70" class="widefat" value="<?php echo $event_desc ?>"></textarea>
+        <div class="lanes-field-container">
+            <label>Event Start</label>
+            <input type="date" name="lanes-event-start-date" required="required" value="<?php echo $event_start_date ?>">
+        </div>
+        <div class="lanes-field-container">
+            <label>Event End</label>
+            <input type="date" name="lanes-event-end-date" required="required" value="<?php echo $event_end_date ?>">
+        </div>
+
+    </div>
+
+
     <?php
 }
 
+add_action('add_meta_boxes_events', 'lanes_add_event_metaboxes');
+
+function save_lanes_event_meta ($post_id, $post)
+{
+    $post_type = get_post_type_object($post->post_type);
+
+    if(!current_user_can($post_type->cap->edit_post, $post_id))
+    {
+        return $post_id;
+    }
+
+    $event_title = ($_POST['lanes-event-title']);
+    $event_desc = ($_POST['lanes-event-desc']);
+    $event_start_date = ($_POST['lanes-event-start-date']);
+    $event_end_date = ($_POST['lanes-event-end-date']);
+
+    update_post_meta($post_id, 'lanes-event-title', $event_title);
+    update_post_meta($post_id, 'lanes-event-desc', $event_desc);
+    update_post_meta($post_id, 'lanes-event-start-date', $event_start_date);
+    update_post_meta($post_id, 'lanes-event-end-date', $event_end_date);
+
+}
+
+add_action('save_post', 'save_lanes_event_meta', 10, 2);
 
 
 
