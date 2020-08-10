@@ -2,7 +2,6 @@
 
 function lanes_register_events()
 {
-
     /**
      * Post Type: Events.
      */
@@ -64,7 +63,8 @@ function lanes_register_events()
         "query_var" => true,
         "menu_position" => 25,
         "menu_icon" => "dashicons-calendar-alt",
-        "supports" => ["thumbnail"],
+        "supports" => ["title", "editor", "thumbnail"],
+        "taxonomies" => ["event_categories", "event_tags"],
     ];
 
     register_post_type("events", $args);
