@@ -42,10 +42,10 @@ function lanes_event_custom_box_html($post)
     $end_date = get_post_meta($post->ID, '_lanes_end_date_meta_key', true);
     ?>
     <label for="lanes_event_start_date">Start Date</label>
-    <input type="text" name="lanes_event_start_date" id="lanes_event_start_date" class="postbox" value="<?php echo $start_date; ?>">
+    <input type="date" name="lanes_event_start_date" id="lanes_event_start_date" class="postbox" value="<?php echo $start_date; ?>">
 
-    <label for="lanes_event_end_date">Start Date</label>
-    <input type="text" name="lanes_event_end_date" id="lanes_event_end_date" class="postbox" value="<?php echo $end_date; ?>">
+    <label for="lanes_event_end_date">End Date</label>
+    <input type="date" name="lanes_event_end_date" id="lanes_event_end_date" class="postbox" value="<?php echo $end_date; ?>">
     <?php
 }
 
