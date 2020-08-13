@@ -56,10 +56,16 @@ if ( !defined('ABSPATH'))
 }
 
 //creates the post type 'Events' with both its own separate 'Event' tag and category taxonomies.
-require_once plugin_dir_path(__FILE__) . 'includes/lanes-event-functions.php';
+require_once plugin_dir_path(__FILE__) . 'includes/lanes-cpt-functions.php';
 add_action( 'init', 'lanes_register_events' );
 add_action( 'init', 'lanes_register_event_categories' );
 add_action( 'init', 'lanes_register_event_tags' );
 
 //creates Custom Fields for Events
-require_once plugin_dir_path(__FILE__) . 'includes/lanes-events-custom-fields.php';
+require_once plugin_dir_path(__FILE__) . 'includes/lanes-custom-fields.php';
+add_action('add_meta_boxes', 'all_add_custom_box');
+add_action('save_post', 'lanes_events_save_postdata');
+add_filter('manage_events_posts_columns', 'lanes_events_admin_column_headers');
+
+//adds the shortcut code
+require_once plugin_dir_path(__FILE__) . 'includes/lanes_shortcode.php';
