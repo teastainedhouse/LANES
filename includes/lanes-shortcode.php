@@ -25,7 +25,7 @@ function lanes_shortcode()
 
         return $result;
 
-        //https://www.smashingmagazine.com/2012/05/wordpress-shortcodes-complete-guide/
+        //https://diveinwp.com/how-to-create-shortcode-for-custom-post-type-to-display-posts/
 
 
     //below is the code from Udemy course
