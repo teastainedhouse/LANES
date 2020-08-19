@@ -27,11 +27,13 @@ function lanes_event_custom_box_html($post)
     $start_date = get_post_meta($post->ID, '_lanes_start_date_meta_key', true);
     $end_date = get_post_meta($post->ID, '_lanes_end_date_meta_key', true);
     ?>
+        <div>
     <label for="lanes_event_start_date">Start Date</label>
     <input type="date" name="lanes_event_start_date" id="lanes_event_start_date" class="postbox" value="<?php echo $start_date; ?>">
 
     <label for="lanes_event_end_date">End Date</label>
     <input type="date" name="lanes_event_end_date" id="lanes_event_end_date" class="postbox" value="<?php echo $end_date; ?>">
+        </div>
     <?php
 }
 
@@ -46,9 +48,4 @@ function lanes_events_admin_column_headers($columns)
 {
     $columns = array('cb'=>'<input type="checkbox" />', 'title'=>__('Event Title'), 'lanes_event_start_date'=>'Start Date');
     return $columns;
-}
-
-function lanes_add_event_metadata_to_single()
-{
-
 }
